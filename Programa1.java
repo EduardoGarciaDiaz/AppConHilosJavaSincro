@@ -13,16 +13,16 @@ public class Programa1 {
         }
 
         public static void realizarJunta(){
-            System.out.println(Thread.currentThread().getName() + " Junta iniciada a las " + hora);
+            System.out.println(Thread.currentThread().getName() + " junta iniciada a las " + hora);
             hora++;
-            System.out.println(Thread.currentThread().getName() + "Junta terminada a las " + hora);
+            System.out.println(Thread.currentThread().getName() + " junta terminada a las " + hora);
         }
     }
 
     public static void main(String[] args){
         //Creación de 10 hilos, 1 por junta.
         for (int i = 0 ; i < 10; i++) {
-            Thread hilo = new Thread(new JuntaThread(), "Junta " + (i+1));
+            Thread hilo = new Thread(new JuntaThread(), "Junta-" + (i+1));
             hilo.start();
         }
     }
