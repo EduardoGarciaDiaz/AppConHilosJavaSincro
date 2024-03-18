@@ -1,5 +1,5 @@
 public class Programa2 {
-    private static int hora;
+    private static Object hora = new Object();
 
     // Clase privada que implementa Runnable
     private static class JuntaThread implements Runnable{
@@ -12,10 +12,12 @@ public class Programa2 {
             realizarJunta();
         }
 
-        public static synchronized void realizarJunta(){
-            System.out.println(Thread.currentThread().getName() + " junta iniciada a las " + hora);
-            hora++;
-            System.out.println(Thread.currentThread().getName() + " junta terminada a las " + hora);
+        public static void realizarJunta(){
+            synchronized (hora) {
+                System.out.println(Thread.currentThread().getName() + " junta iniciada a las " + hora);
+                hora = (int) hora +1;
+                System.out.println(Thread.currentThread().getName() + " junta terminada a las " + hora);    
+            }
         }
     }
 
